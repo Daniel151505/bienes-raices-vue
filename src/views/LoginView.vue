@@ -1,16 +1,16 @@
 <script setup>
 import { useForm, useField } from "vee-validate";
 import { loginSchema as validationSchema } from "../validation/loginSchema";
-import { useAuthStore } from '../stores/auth'
+import { useAuthStore } from "../stores/auth";
 
 const { handleSubmit } = useForm({ validationSchema });
-const auth = useAuthStore()
+const auth = useAuthStore();
 
 const email = useField("email");
 const password = useField("password");
 
 const submit = handleSubmit((values) => {
-    auth.login(values)
+  auth.login(values);
 });
 </script>
 
@@ -22,7 +22,7 @@ const submit = handleSubmit((values) => {
     <v-card-subtitle class="text-h5">
       Inicia sesión con tu cuenta
     </v-card-subtitle>
-
+    <v-alert class="my-5" type="error" title="Alert title"></v-alert>
     <v-form class="mt-5">
       <v-text-field
         type="email"
