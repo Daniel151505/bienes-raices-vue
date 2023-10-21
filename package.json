@@ -8,10 +8,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "firebase": "^10.5.0",
     "pinia": "^2.1.7",
     "vee-validate": "^4.11.8",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5",
+    "vuefire": "^3.1.17",
     "vuetify": "^3.3.22"
   },
   "devDependencies": {
