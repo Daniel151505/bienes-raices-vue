@@ -15,28 +15,43 @@ const router = createRouter({
       component: () => import("../views/LoginView.vue"),
     },
     {
-      path: '/admin',
-      name: 'admin',
-      component: () => import('../views/admin/AdminLayout.vue'),
+      path: "/admin",
+      name: "admin",
+      component: () => import("../views/admin/AdminLayout.vue"),
+      meta: { requiresAuth: true },
       children: [
-      {
-        path: "/admin/propiedades",
-        name: "admin-propiedades",
-        component: () => import('../views/admin/AdminView.vue')
-      },
-      {
-        path: "/admin/nueva",
-        name: "nueva-propiedad",
-        component: () => import('../views/admin/NuevaPropiedadView.vue')
-      },
-      {
-        path: "/admin/editar/:id",
-        name: "editar-propiedad",
-        component: () => import('../views/admin/EditarPropiedadView.vue')
-      },
-      ]
-    }
+        {
+          path: "/admin/propiedades",
+          name: "admin-propiedades",
+          component: () => import("../views/admin/AdminView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "/admin/nueva",
+          name: "nueva-propiedad",
+          component: () => import("../views/admin/NuevaPropiedadView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "/admin/editar/:id",
+          name: "editar-propiedad",
+          component: () => import("../views/admin/EditarPropiedadView.vue"),
+          meta: { requiresAuth: true },
+        },
+      ],
+    },
   ],
+});
+
+// Guard de navegación
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some((url) => url.meta.requiresAuth);
+  if (requiresAuth) {
+    // Comprobar si el usuario esta autenticado
+  } else {
+    // No esta protegido, mostramos la vista
+    next();
+  }
 });
 
 export default router;
