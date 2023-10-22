@@ -22,7 +22,12 @@ const submit = handleSubmit((values) => {
     <v-card-subtitle class="text-h5">
       Inicia sesión con tu cuenta
     </v-card-subtitle>
-    <v-alert class="my-5" type="error" title="Alert title"></v-alert>
+    <v-alert
+      v-if="auth.hasError"
+      class="my-5"
+      type="error"
+      :title="auth.errorMsg"
+    ></v-alert>
     <v-form class="mt-5">
       <v-text-field
         type="email"
