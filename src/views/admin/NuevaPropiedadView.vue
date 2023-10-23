@@ -12,7 +12,7 @@ import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
 const items = [1, 2, 3, 4, 5];
 
 const { uploadImage, image, url } = useImage();
-const { zoom, center } = useLocationMap();
+const { zoom, center, pin } = useLocationMap();
 
 const router = useRouter();
 const db = useFirestore();
@@ -21,6 +21,7 @@ const { handleSubmit } = useForm({
   validationSchema: {
     ...validationSchema,
     ...imageSchema,
+    ubicacion: center.value,
   },
 });
 
@@ -141,7 +142,7 @@ const submit = handleSubmit(async (values) => {
             :center="center"
             :use-global-leaflet="false"
           >
-            <l-marker :lat-lng="center" draggable />
+            <l-marker :lat-lng="center" draggable @moveend="pin" />
             <l-tile-layer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               layer-type="base"

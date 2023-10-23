@@ -4,8 +4,14 @@ export default function useLocationMap() {
   const zoom = ref(15);
   const center = ref([25.767424, -80.192053]);
 
+  function pin(e) {
+    const marker = e.target.getLating();
+    center.value = [marker.lat, marker.lng];
+  }
+
   return {
     zoom,
     center,
+    pin,
   };
 }
