@@ -1,8 +1,12 @@
 <script setup>
 import { useForm, useField } from "vee-validate";
+import { collection, addDoc } from "firebase/firestore";
+import { useFirestore } from "vuefire";
 import { validationSchema, imageSchema } from "@/validation/propiedadSchema";
 
 const items = [1, 2, 3, 4, 5];
+
+const db = useFirestore();
 
 const { handleSubmit } = useForm({
   validationSchema: {
@@ -20,7 +24,17 @@ const estacionamiento = useField("estacionamiento");
 const descripcion = useField("descripcion");
 const alberca = useField("alberca");
 
-const submit = handleSubmit((values) => {});
+const submit = handleSubmit(async (values) => {
+  const { imagen, ...propiedad } = values;
+  console.log(propiedad);
+
+  return;
+
+  const docRef = await addDoc(collection(db, "propiedades"), {
+    name: "Tokyo",
+    country: "Japan",
+  });
+});
 </script>
 <template>
   <v-card max-width="800" flat class="mx-auto my-10">
