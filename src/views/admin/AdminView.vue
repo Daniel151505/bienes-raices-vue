@@ -20,10 +20,24 @@ const { propiedadesCollection, propertyPrice } = usePropiedades();
           </v-list-item-media>
         </template>
         <v-list-item-title>{{ propiedad.titulo }}</v-list-item-title>
-        <v-list-item-subtitle>{{ propertyPrice(propiedad.precio) }}</v-list-item-subtitle>
+        <v-list-item-subtitle>{{
+          propertyPrice(propiedad.precio)
+        }}</v-list-item-subtitle>
 
-        <template>
-          <v-btn color="info" flat clas="mr-2"> Editar </v-btn>
+        <template v-slot:append>
+          <v-btn
+            class="mr-2"
+            color="info"
+            flat
+            :to="{
+              name: 'editar-propiedad',
+              params: {
+                id: propiedad.id,
+              },
+            }"
+          >
+            Editar
+          </v-btn>
           <v-btn color="red-darken-3" flat> Eliminar </v-btn>
         </template>
       </v-list-item>
