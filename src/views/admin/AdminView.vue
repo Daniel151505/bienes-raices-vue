@@ -1,7 +1,7 @@
 <script setup>
 import usePropiedades from "../../composables/usePropiedades";
 
-const { propiedadesCollection } = usePropiedades();
+const { propiedadesCollection, propertyPrice } = usePropiedades();
 </script>
 <template>
   <h2 class="text-center text-h3 my-5 font-weight-bold">Admin Panel</h2>
@@ -15,12 +15,12 @@ const { propiedadesCollection } = usePropiedades();
         :key="propiedad.id"
       >
         <template v-slot:prepend>
-          <v-list-item-media start="true">
+          <v-list-item-media :start="true">
             <img width="180" :src="propiedad.imagen" />
           </v-list-item-media>
         </template>
         <v-list-item-title>{{ propiedad.titulo }}</v-list-item-title>
-        <v-list-item-subtitle>{{ propiedad.precio }}</v-list-item-subtitle>
+        <v-list-item-subtitle>{{ propertyPrice(propiedad.precio) }}</v-list-item-subtitle>
 
         <template>
           <v-btn color="info" flat clas="mr-2"> Editar </v-btn>
