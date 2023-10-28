@@ -23,7 +23,12 @@ defineProps({
         Precio: {{ price(propiedad.precio) }}
       </v-card-text>
       <template v-slot:actions>
-        <v-btn block color="info" variant="flat">
+        <v-btn
+          block
+          color="info"
+          variant="flat"
+          :to="{ name: 'propiedad', params: { id: propiedad.id } }"
+        >
           Ver Información
         </v-btn>
       </template>
