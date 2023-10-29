@@ -1,9 +1,61 @@
 <script setup>
-import { useRoute } from 'vue-router';
+import { doc } from "firebase/firestore";
+import { useRoute } from "vue-router";
+import { useDocument, useFirestore } from "vuefire";
+import { propertyPrice } from "../helpers";
 
 const route = useRoute();
+const db = useFirestore();
+const docRef = doc(db, "propiedades", route.params.id);
+const propiedad = useDocument(docRef);
 </script>
 
 <template>
-  <h1>Propiedad</h1>
+  <v-card flat>
+    <v-card-title class="mt-5 text-h3 text-center py-5 font-weight-bold">
+      {{ propiedad?.titulo }}
+    </v-card-title>
+    <v-img :src="propiedad?.imagen" height="550" cover />
+    <div
+      class="bg-blue-grey-lighten-5 d-flex flex-column flex-md-row align-center"
+    >
+      <v-card-text>
+        Precio:
+        <span class="font-weight-bold">
+          {{ propertyPrice(propiedad?.precio) }}
+        </span>
+      </v-card-text>
+      <v-card-text>
+        Baños:
+        <span class="font-weight-bold">{{ propiedad?.wc }}</span>
+      </v-card-text>
+      <v-card-text>
+        Estacionamiento:
+        <span class="font-weight-bold">{{ propiedad?.estacionamiento }}</span>
+      </v-card-text>
+      <v-card-text>
+        Habitaciones:
+        <span class="font-weight-bold">{{ propiedad?.habitaciones }}</span>
+      </v-card-text>
+    </div>
+
+    <v-row>
+      <v-col cols="12" md="8">
+        <div class="text-pre-wrap py-10">
+          {{ propiedad.descripcion }}
+        </div>
+      </v-col>
+      <v-col cols="12" md="4">
+        <div class="py-10">
+          <p>mapa aqui</p>
+        </div>
+      </v-col>
+    </v-row>
+  </v-card>
 </template>
+
+<style>
+.text-pre-wrap {
+  white-space: pre-wrap;
+}
+</style>
