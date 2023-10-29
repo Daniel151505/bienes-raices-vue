@@ -39,7 +39,9 @@ const { propiedadesCollection } = usePropiedades();
           >
             Editar
           </v-btn>
-          <v-btn color="red-darken-3" flat> Eliminar </v-btn>
+          <v-btn color="red-darken-3" flat @click="deleteItem(propiedad.id)">
+            Eliminar
+          </v-btn>
         </template>
       </v-list-item>
     </v-list>
