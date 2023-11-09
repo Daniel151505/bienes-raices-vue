@@ -2,7 +2,7 @@
 import usePropiedades from "../../composables/usePropiedades";
 import { propertyPrice } from "../../helpers";
 
-const { propiedadesCollection } = usePropiedades();
+const { propiedadesCollection, deleteItem } = usePropiedades();
 </script>
 <template>
   <h2 class="text-center text-h3 my-5 font-weight-bold">Admin Panel</h2>

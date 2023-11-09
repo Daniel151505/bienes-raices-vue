@@ -3,10 +3,10 @@ import { watch } from "vue";
 import { doc } from "firebase/firestore";
 import { useRoute } from "vue-router";
 import { useDocument, useFirestore } from "vuefire";
-import { propertyPrice } from "../helpers";
 import "leaflet/dist/leaflet.css";
-import useLocationMap from "../composables/useLocationMap";
 import { LMap, LTileLayer, LMarker, LPopup } from "@vue-leaflet/vue-leaflet";
+import useLocationMap from "../composables/useLocationMap";
+import { propertyPrice } from "../helpers";
 
 const { zoom, center } = useLocationMap();
 
@@ -69,8 +69,6 @@ watch(propiedad, (propiedad) => {
             </l-marker>
             <l-tile-layer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              layer-type="base"
-              name="OpenStreetMap"
             ></l-tile-layer>
           </l-map>
         </div>

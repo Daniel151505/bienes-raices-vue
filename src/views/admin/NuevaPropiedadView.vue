@@ -21,7 +21,6 @@ const { handleSubmit } = useForm({
   validationSchema: {
     ...validationSchema,
     ...imageSchema,
-    ubicacion: center.value,
   },
 });
 
@@ -42,6 +41,7 @@ const submit = handleSubmit(async (values) => {
   const docRef = await addDoc(collection(db, "propiedades"), {
     ...propiedad,
     imagen: url.value,
+    ubicacion: center.value,
   });
 
   if (docRef.id) {
