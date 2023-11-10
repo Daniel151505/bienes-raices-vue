@@ -51,7 +51,7 @@ watch(propiedad, (propiedad) => {
     <v-row>
       <v-col cols="12" md="8">
         <div class="text-pre-wrap py-10">
-          {{ propiedad.descripcion }}
+          {{ propiedad ? propiedad.descripcion : '' }}
         </div>
       </v-col>
       <v-col cols="12" md="4">
@@ -64,7 +64,7 @@ watch(propiedad, (propiedad) => {
           >
             <l-marker :lat-lng="center">
               <l-popup>
-                {{ propiedad.titulo }}
+                {{ propiedad ? propiedad.titulo : '' }}
               </l-popup>
             </l-marker>
             <l-tile-layer
