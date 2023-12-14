@@ -11,7 +11,7 @@ defineProps({
 
 <template>
   <v-col cols="12" md="4">
-    <v-card>
+    <v-card class="opacity">
       <v-img :src="propiedad.imagen" height="250" cover />
       <v-card-title class="font-weight-bold">
         {{ propiedad.titulo }}

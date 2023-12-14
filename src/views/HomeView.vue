@@ -6,9 +6,9 @@ import { propertyPrice } from "../helpers";
 const { alberca, filteredItems } = usePropiedades();
 </script>
 
-<template>
+<template outlined color="transparent">
   <h1 class="text-center">Nuestras Propiedades</h1>
-  <v-card flat class="py-10">
+  <v-card flat class="opacity py-10">
     <v-card-title class="text-h5">
       Búsqueda
       <span>

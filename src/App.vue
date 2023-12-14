@@ -10,16 +10,18 @@ const auth = useAuthStore();
     <v-layout>
       <v-app-bar color="blue-darken-1">
         <template v-slot:prepend>
-          <v-btn :to="{ name: 'home' }"> Bienes Raices - VueFire </v-btn>
+          <v-btn :to="{ name: 'home' }" :active="false"> Real State </v-btn>
         </template>
         <template v-slot:append>
-          <div v-if="auth.isAuth">
-            <v-btn :to="{ name: 'admin-propiedades' }"> Admin </v-btn>
-            <v-btn @click="auth.logout"> Cerrar Sesión </v-btn>
+          <div class="admin-container">
+            <div v-if="auth.isAuth">
+            <v-btn class="admin" :to="{ name: 'admin-propiedades' }"> Admin </v-btn>
+            <v-btn @click="auth.logout" icon="mdi-logout"></v-btn>
           </div>
           <div v-else>
             <v-btn :to="{ name: 'home' }"> Inicio </v-btn>
-            <v-btn :to="{ name: 'login' }"> Iniciar Sesión </v-btn>
+            <v-btn :to="{ name: 'login' }" icon="mdi-account"></v-btn>
+          </div>
           </div>
         </template>
       </v-app-bar>
@@ -30,4 +32,5 @@ const auth = useAuthStore();
       </v-main>
     </v-layout>
   </v-card>
+  
 </template>
